@@ -1,0 +1,149 @@
+" colorcolumn
+highlight MatchParen cterm=bold ctermfg=cyan
+
+
+
+" set commands
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set number
+set tabstop=2
+set backspace=indent,eol,start
+set autowrite
+set colorcolumn=81
+" Read external changes
+set autoread
+" Incremental search
+set incsearch
+" Ignore cases in search
+set ignorecase
+set smartcase
+" no files
+set nobackup
+set nowritebackup
+" folding
+set foldmethod=indent
+set foldnestmax=1
+" indent
+set autoindent
+set smartindent
+
+" Color
+colorscheme desert
+
+" Highlight all search patterns
+set hlsearch
+" Highlight the status line of the active window
+hi StatusLine ctermfg=Yellow
+" Color popup
+"Omni menu colors
+hi Pmenu     ctermfg=lightgrey ctermbg=brown     guifg=grey60   guibg=brown
+hi PmenuSel  ctermfg=white     ctermbg=darkgrey  guifg=white    guibg=grey40
+
+" enable syntax highlight and auto-complete
+syntax enable
+syntax on             " syntax highlighting
+
+
+"Edit mapping (make cursor keys work like in Windows: <C-Left><C-Right>
+"Move to next word.
+nnoremap <C-Left> b
+vnoremap <C-S-Left> b
+nnoremap <C-S-Left> gh<C-O>b
+inoremap <C-S-Left> <C-\><C-O>gh<C-O>b
+
+nnoremap <C-Right> w
+vnoremap <C-S-Right> w
+nnoremap <C-S-Right> gh<C-O>w
+inoremap <C-S-Right> <C-\><C-O>gh<C-O>w
+
+" Ctrl-c as copy
+vnoremap <C-C> "+y
+
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+" Tab/Shift+Tab for ident
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Ctrl-Home as top of file
+inoremap <C-Home> gg
+" Ctrl-End as end of file
+inoremap <C-End> G
+
+" Ctrl-S as save, also in Insert mode
+noremap <C-S> :write<CR>
+vnoremap <C-S> <C-C>:write<CR>
+inoremap <C-S> <C-O>:write<CR>
+
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+" CTRL-V and SHIFT-Insert are Paste
+"map <C-V> "+gP
+map <S-Insert> "+gP
+"cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+
+" Toggle Quickfix Windows
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+if exists("g:qfix_win") && a:forced == 0
+cclose
+unlet g:qfix_win
+else
+copen 10
+let g:qfix_win = bufnr("$")
+endif
+endfunction
+nnoremap <leader>q :QFix<CR>
+
+" TagList options
+let Tlist_Close_On_Select = 1 "close taglist window once we selected something
+let Tlist_Exit_OnlyWindow = 1 "if taglist window is the only window left, exit vim
+let Tlist_Show_Menu = 1 "show Tags menu in gvim
+let Tlist_Show_One_File = 1 "show tags of only one file
+let Tlist_GainFocus_On_ToggleOpen = 1 "automatically switch to taglist window
+let Tlist_Highlight_Tag_On_BufEnter = 1 "highlight current tag in taglist window
+let Tlist_Process_File_Always = 1 "even without taglist window, create tags file, required for displaying tag in statusline
+let Tlist_Use_Right_Window = 1 "display taglist window on the right
+let Tlist_Display_Prototype = 1 "display full prototype instead of just function name
+
+" Function keys
+" F2 -- Toggle Paste mode
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+" F3 -- Toggle Taglist
+"let Tlist_Sort_Type = “name”
+nmap <F3> :TlistToggle<cr>
+" F4 -- Toggle NERDtree
+nmap <F4> :NERDTreeToggle<cr>
+" F6 -- Toggle Taglist prototype
+nmap <F6> :TlistShowPrototype
+
+" " Bundles through Vundle
+set nocompatible               " be iMproved
+filetype off                   " required!
+filetype plugin indent on
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+" Additional bundles
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'AutoComplPop'
+Bundle 'The-NERD-tree'
+Bundle 'tlib'
+Bundle 'VikiDeplate'
+Bundle 'majutsushi/tagbar'
+Bundle 'flazz/vim-colorschemes'
