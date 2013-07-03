@@ -66,11 +66,11 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
-" Tab/Shift+Tab for ident
-nnoremap <Tab> >>_
+" Ctrl+Tab/Shift+Tab for ident
+nnoremap <C-Tab> >>_
 nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
+vnoremap <C-Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Ctrl-Home as top of file
@@ -131,6 +131,8 @@ nmap <F3> :TlistToggle<cr>
 nmap <F4> :NERDTreeToggle<cr>
 " F6 -- Toggle Taglist prototype
 nmap <F6> :TlistShowPrototype
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 " " Bundles through Vundle
 set nocompatible               " be iMproved
