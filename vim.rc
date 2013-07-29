@@ -32,6 +32,30 @@ set smartindent
 " Color
 colorscheme desert
 
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
+
 " Highlight all search patterns
 set hlsearch
 " Highlight the status line of the active window
@@ -124,9 +148,9 @@ let Tlist_Display_Prototype = 1 "display full prototype instead of just function
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
-" F3 -- Toggle Taglist
+" F3 -- Toggle tagbar
 "let Tlist_Sort_Type = “name”
-nmap <F3> :TlistToggle<cr>
+nmap <F3> :TagbarToggle<cr>
 " F4 -- Toggle NERDtree
 nmap <F4> :NERDTreeToggle<cr>
 " F6 -- Toggle Taglist prototype
@@ -145,7 +169,9 @@ Bundle 'gmarik/vundle'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'AutoComplPop'
 Bundle 'The-NERD-tree'
-Bundle 'tlib'
-Bundle 'VikiDeplate'
 Bundle 'majutsushi/tagbar'
 Bundle 'flazz/vim-colorschemes'
+
+if argc() == 2
+  silent all
+endif
