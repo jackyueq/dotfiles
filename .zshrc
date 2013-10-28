@@ -1,5 +1,3 @@
-source /etc/bash_completion.d/g4d
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -43,11 +41,8 @@ export PATH=/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/l
 setopt PROMPT_SUBST
 PROMPT='%(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f%{$(pwd)%${#PWD}G%}$(git_super_status)> '
 export EDITOR='vim '
-export P4EDITOR=$EDITOR
-export LOCAL_HOME=/usr/local/google/home/$USER
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R -N '
-export G4MULTIDIFF=1
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
@@ -58,13 +53,11 @@ alias dir='vdir --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
-alias home='cd $LOCAL_HOME'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF --color'
 alias ls='ls --color'
 alias newsmth='luit -encoding gbk telnet bbs.newsmth.net'
-alias fileutil='nocorrect fileutil '
 alias node="/usr/local/bin/node"
 alias npm="/usr/local/bin/npm"
 
