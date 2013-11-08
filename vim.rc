@@ -285,6 +285,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'davidhalter/jedi-vim'
 
 
