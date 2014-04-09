@@ -32,6 +32,9 @@ set foldnestmax=1
 set autoindent
 set smartindent
 
+" highlight current line
+set cursorline
+
 " Color
 colorscheme desert
 
@@ -267,6 +270,9 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " omnicomplete
 let g:AutoComplPop_BehaviorKeywordLength = 0
 
+" YCM
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 
 
 " " Bundles through Vundle
@@ -278,7 +284,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Additional bundles
 Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 "Bundle 'neocomplcache'
 Bundle 'The-NERD-tree'
 Bundle 'majutsushi/tagbar'
@@ -286,7 +292,9 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 "Bundle 'davidhalter/jedi-vim'
+
 
 
 if argc() == 2
