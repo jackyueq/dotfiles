@@ -38,6 +38,8 @@ set cursorline
 " Color
 colorscheme desert
 
+set spellfile+=~/.vim/bundle/vundle/spell/en.utf-8.add
+
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
 " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
@@ -63,11 +65,11 @@ function! AutoHighlightToggle()
 endfunction
 
 " Change cursor shape in different modes
-if has("autocmd")
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-endif
+"if has("autocmd")
+"  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+"  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+"endif
 
 
 " Highlight all search patterns
@@ -272,6 +274,8 @@ let g:AutoComplPop_BehaviorKeywordLength = 0
 
 " YCM
 let g:ycm_autoclose_preview_window_after_completion = 1
+" to work together with gitgutter sign column.
+let g:ycm_enable_diagnostic_signs = 0
 
 
 
@@ -293,6 +297,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'octol/vim-cpp-enhanced-highlight'
+Bundle 'mru.vim'
+Bundle 'tComment'
 "Bundle 'davidhalter/jedi-vim'
 
 
