@@ -299,6 +299,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'mru.vim'
 Bundle 'tComment'
+Bundle 'airblade/vim-gitgutter'
 "Bundle 'davidhalter/jedi-vim'
 
 
