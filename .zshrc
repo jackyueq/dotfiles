@@ -63,7 +63,7 @@ alias npm="/usr/local/bin/npm"
 
 function t(){ wget -qO- "http://fanyi.youdao.com/openapi.do?keyfrom=leecade&key=54015339&type=data&doctype=json&version=1.1&q=$1" | grep -oP '(?<="explains":\[")[^"]*'; }
 
-function quote() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=l1"
+function quote() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=l1c"
 }
 
 setopt no_nomatch # if there are no matches for globs, leave them alone and execute the command
