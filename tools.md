@@ -20,6 +20,7 @@ Pointers to tools.
 
 * [Intent
   Intercept](https://play.google.com/store/apps/details?id=uk.co.ashtonbrsc.android.intentintercept)
+* [tPacketCapture](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture)
 * [Libraries for
   developers](https://play.google.com/store/apps/details?id=com.desarrollodroide.repos)
 
@@ -37,6 +38,7 @@ Pointers to tools.
 # Windows
 
 * [Console](http://sourceforge.net/projects/console/)
+* [XShell Free](https://www.netsarang.com/download/free_license.html)
 
 
 # OS X
@@ -44,3 +46,4 @@ Pointers to tools.
 * [iTerm2](https://iterm2.com/)
 * [BetterTouch](http://www.bettertouchtool.net/)
 * [Brew](http://brew.sh/)
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
