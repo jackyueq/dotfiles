@@ -63,8 +63,8 @@ alias npm="/usr/local/bin/npm"
 
 function t(){ wget -qO- "http://fanyi.youdao.com/openapi.do?keyfrom=leecade&key=54015339&type=data&doctype=json&version=1.1&q=$1" | grep -oP '(?<="explains":\[")[^"]*'; }
 
-function quote() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=l1c"
-}
+# Params at http://www.jarloo.com/yahoo_finance/
+function q() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=l1cva2gh" }
 
 setopt no_nomatch # if there are no matches for globs, leave them alone and execute the command
 setopt no_cdable_vars # don't use named directories in cd autocompletion

@@ -294,13 +294,15 @@ Bundle 'The-NERD-tree'
 Bundle 'majutsushi/tagbar'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
-Bundle 'octol/vim-cpp-enhanced-highlight'
+"Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'mru.vim'
 Bundle 'tComment'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'Townk/vim-autoclose'
 "Bundle 'davidhalter/jedi-vim'
+Bundle 'hsanson/vim-android'
 
 
 
