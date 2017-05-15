@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ "$TMUX" = "" ]; then tmx; fi
 
 
 # Set name of the theme to load.
@@ -64,7 +64,7 @@ alias npm="/usr/local/bin/npm"
 function t(){ wget -qO- "http://fanyi.youdao.com/openapi.do?keyfrom=leecade&key=54015339&type=data&doctype=json&version=1.1&q=$1" | grep -oP '(?<="explains":\[")[^"]*'; }
 
 # Params at http://www.jarloo.com/yahoo_finance/
-function q() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=l1cva2gh" }
+function q() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=sl1cva2gh" }
 
 setopt no_nomatch # if there are no matches for globs, leave them alone and execute the command
 setopt no_cdable_vars # don't use named directories in cd autocompletion
@@ -72,3 +72,18 @@ setopt no_cdable_vars # don't use named directories in cd autocompletion
 #if [[ ! $TERM =~ screen ]]; then
 #    exec tmux
 #fi
+
+function exists { which $1 &> /dev/null }
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi

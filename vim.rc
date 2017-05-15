@@ -273,9 +273,9 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 let g:AutoComplPop_BehaviorKeywordLength = 0
 
 " YCM
-let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
 " to work together with gitgutter sign column.
-let g:ycm_enable_diagnostic_signs = 0
+"let g:ycm_enable_diagnostic_signs = 0
 
 
 
@@ -299,7 +299,7 @@ Bundle 'tpope/vim-fugitive'
 "Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'mru.vim'
 Bundle 'tComment'
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 Bundle 'Townk/vim-autoclose'
 "Bundle 'davidhalter/jedi-vim'
 Bundle 'hsanson/vim-android'
