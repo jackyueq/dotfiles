@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-if [ "$TMUX" = "" ]; then tmx; fi
+# if [ "$TMUX" = "" ]; then tmx; fi
 
 
 # Set name of the theme to load.
@@ -35,18 +35,25 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /home/yueqi/git/zsh-git-prompt/zshrc.sh
-
-export PATH=/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/yueqi/bin
+source /home/yue.qi/git/zsh-git-prompt/zshrc.sh
+source /data00/home/yue.qi/git/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /data00/home/yue.qi/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/yue.qi/bin:/opt/tiger/ss_bin:/us
+r/local/jdk/bin:/usr/bin/opt/tiger/ss_lib/bin:/opt/tiger/typhoon-blade:/usr/local/go/bin:/data00/home/yue.qi/.local/bin
 setopt PROMPT_SUBST
 PROMPT='%(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f%{$(pwd)%${#PWD}G%}$(git_super_status)> '
 export EDITOR='vim '
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R -N '
+export LESSOPEN="| /data00/home/yue.qi/git/src-hilite/src-hilite-lesspipe.sh %s"
+# export LESS=' -cse -F -X -R -N '
+export LESS=' -F -X -N -R '
+export TZ=":America/Los_Angeles"
 #export GTK_IM_MODULE=ibus
 #export XMODIFIERS=@im=ibus
 #export QT_IM_MODULE=ibus
+export TOOLCHAIN=x86_64-gcc830
+export INFSEC_HADOOP_ENABLED=1
 
+alias ccat='pygmentize -g'
 alias cd..='cd ..'
 alias cls='clear'
 alias dir='vdir --color=auto'
@@ -57,17 +64,34 @@ alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF --color'
 alias ls='ls --color'
-alias newsmth='luit -encoding gbk telnet bbs.newsmth.net'
-alias node="/usr/local/bin/node"
-alias npm="/usr/local/bin/npm"
-
-function t(){ wget -qO- "http://fanyi.youdao.com/openapi.do?keyfrom=leecade&key=54015339&type=data&doctype=json&version=1.1&q=$1" | grep -oP '(?<="explains":\[")[^"]*'; }
-
-# Params at http://www.jarloo.com/yahoo_finance/
-function q() { curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$1&f=sl1cva2gh" }
+# alias node="/usr/local/bin/node"
+# alias npm="/usr/local/bin/npm"
+alias gobyte="cd ~/byted"
+alias hg="git"
+alias df='df -x tmpfs'
+# alias less="view"
 
 setopt no_nomatch # if there are no matches for globs, leave them alone and execute the command
 setopt no_cdable_vars # don't use named directories in cd autocompletion
+
+export TERM=xterm-256color
+
+#if [[ ! $TERM =~ screen ]]; then
+#    exec tmux
+#fi
+
+alias ls='ls --color'
+# alias node="/usr/local/bin/node"
+# alias npm="/usr/local/bin/npm"
+alias gobyte="cd ~/byted"
+alias hg="git"
+alias df='df -x tmpfs'
+# alias less="view"
+
+setopt no_nomatch # if there are no matches for globs, leave them alone and execute the command
+setopt no_cdable_vars # don't use named directories in cd autocompletion
+
+export TERM=xterm-256color
 
 #if [[ ! $TERM =~ screen ]]; then
 #    exec tmux
@@ -87,3 +111,12 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+if [ -n "$BASH_VERSION" -a -n "$PS1" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+fi
+
+# bindkey "\E[1~" beginning-of-line
+# bindkey "\E[4~" end-of-line
